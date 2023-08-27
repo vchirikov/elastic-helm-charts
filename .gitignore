@@ -7,3 +7,4 @@ index.yaml
 .idea/
 /venv
 .vscode/
+tmp/

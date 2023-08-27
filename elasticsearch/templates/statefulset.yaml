@@ -310,7 +310,7 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
-          {{- if and (has "master" .Values.roles) (gt .Values.replicas 1) }}
+          {{- if and (has "master" .Values.roles) (gt (int (.Values.replicas)) 1) }}
           - name: cluster.initial_master_nodes
             value: "{{ template "elasticsearch.endpoints" . }}"
           {{- end }}
