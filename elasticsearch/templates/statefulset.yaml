@@ -321,7 +321,7 @@ spec:
           {{- if lt (int (include "elasticsearch.esMajorVersion" .)) 7 }}
           - name: discovery.zen.ping.unicast.hosts
             value: "{{ template "elasticsearch.masterService" . }}-headless"
-          {{- else }}
+          {{- else if gt (int (.Values.replicas)) 1 }}
           - name: discovery.seed_hosts
             value: "{{ template "elasticsearch.masterService" . }}-headless"
           {{- end }}
